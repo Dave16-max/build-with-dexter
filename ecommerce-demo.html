@@ -9,49 +9,90 @@
 <style>body{font-family:'Inter',sans-serif}.scroll-hide::-webkit-scrollbar{display:none}.scroll-hide{-ms-overflow-style:none;scrollbar-width:none}</style>
 </head>
 <body class="bg-[#FFF7ED] text-black">
-<header class="flex justify-between items-center px-5 py-4 bg-white border-b sticky top-0 z-10">
+<header class="flex justify-between items-center px-5 py-4 bg-white border-b sticky top-0 z-20">
 <div class="flex items-center gap-2"><div class="w-8 h-8 bg-black rounded-lg flex items-center justify-center text-white font-extrabold">S</div><p class="font-extrabold text-sm tracking-tighter">SHOPNG</p></div>
 <div class="flex items-center gap-3">
-<div class="w-8 h-8 bg-[#FFF7ED] rounded-full flex items-center justify-center">🛒</div>
+<div class="relative"><div class="w-8 h-8 bg-[#FFF7ED] rounded-full flex items-center justify-center">🛒</div><span id="cartCount" class="absolute -top-1 -right-1 bg-[#FF6B00] text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full font-bold">0</span></div>
 <a href="/" class="text-xs border border-black px-3 py-1.5 rounded-full font-bold">← Back</a>
 </div>
 </header>
 
+<div id="toast" class="fixed top-[70px] left-1/2 -translate-x-1/2 bg-black text-white px-4 py-2 rounded-full text-xs font-bold z-50 hidden">Added to cart ✓</div>
+
 <section class="px-5 py-7 bg-black text-white rounded-b-[30px]">
 <h1 class="text-[32px] leading-[0.95] font-extrabold tracking-tighter">Everything You Need. <span class="text-[#FF6B00]">Delivered Fast.</span></h1>
 <div class="mt-5 flex gap-2">
-<input placeholder="Search sneakers, phones, bags..." class="flex-1 bg-white/10 border border-white/10 rounded-full px-4 py-3 text-sm outline-none placeholder:text-white/40">
-<button class="bg-[#FF6B00] px-5 rounded-full font-bold text-sm">Search</button>
+<input id="searchInput" placeholder="Search sneakers, phones, bags..." class="flex-1 bg-white/10 border border-white/10 rounded-full px-4 py-3 text-sm outline-none placeholder:text-white/40">
+<button onclick="doSearch()" class="bg-[#FF6B00] px-5 rounded-full font-bold text-sm">Search</button>
 </div>
-<div class="mt-4 flex gap-2 text-[11px]"><span class="bg-white/10 px-3 py-1 rounded-full">🔥 1k+ orders today</span><span class="bg-[#FF6B00] px-3 py-1 rounded-full font-bold">Free Delivery in Lagos</span></div>
 </section>
 
 <section class="px-5 py-6">
 <div class="flex justify-between items-center mb-4">
 <p class="font-bold text-xs tracking-widest">SHOP BY CATEGORY</p>
-<p class="text-xs text-gray-500">Swipe →</p>
+<p class="text-xs text-gray-500">Tap to filter</p>
 </div>
 <div class="flex gap-3 overflow-x-auto scroll-hide snap-x">
-<div class="snap-start min-w-[80px] text-center"><div class="w-[64px] h-[64px] bg-white border rounded-2xl flex items-center justify-center text-xl">👟</div><p class="text-xs font-bold mt-2">Sneakers</p></div>
-<div class="snap-start min-w-[80px] text-center"><div class="w-[64px] h-[64px] bg-white border rounded-2xl flex items-center justify-center text-xl">📱</div><p class="text-xs font-bold mt-2">Phones</p></div>
-<div class="snap-start min-w-[80px] text-center"><div class="w-[64px] h-[64px] bg-white border rounded-2xl flex items-center justify-center text-xl">👜</div><p class="text-xs font-bold mt-2">Bags</p></div>
-<div class="snap-start min-w-[80px] text-center"><div class="w-[64px] h-[64px] bg-white border rounded-2xl flex items-center justify-center text-xl">⌚</div><p class="text-xs font-bold mt-2">Watches</p></div>
-<div class="snap-start min-w-[80px] text-center"><div class="w-[64px] h-[64px] bg-white border rounded-2xl flex items-center justify-center text-xl">💄</div><p class="text-xs font-bold mt-2">Beauty</p></div>
+<button onclick="filterCat('all')" class="cat-btn snap-start min-w-[80px] text-center"><div class="w-[64px] h-[64px] bg-black text-white border-2 border-black rounded-2xl flex items-center justify-center text-xl">★</div><p class="text-xs font-bold mt-2">All</p></button>
+<button onclick="filterCat('sneakers')" class="cat-btn snap-start min-w-[80px] text-center"><div class="w-[64px] h-[64px] bg-white border rounded-2xl flex items-center justify-center text-xl">👟</div><p class="text-xs font-bold mt-2">Sneakers</p></button>
+<button onclick="filterCat('phones')" class="cat-btn snap-start min-w-[80px] text-center"><div class="w-[64px] h-[64px] bg-white border rounded-2xl flex items-center justify-center text-xl">📱</div><p class="text-xs font-bold mt-2">Phones</p></button>
+<button onclick="filterCat('bags')" class="cat-btn snap-start min-w-[80px] text-center"><div class="w-[64px] h-[64px] bg-white border rounded-2xl flex items-center justify-center text-xl">👜</div><p class="text-xs font-bold mt-2">Bags</p></button>
 </div>
 
-<div class="mt-8 grid grid-cols-2 gap-3">
-<div class="bg-white border rounded-[20px] p-3"><div class="bg-[#FFF7ED] rounded-xl h-[110px] flex items-center justify-center text-3xl">👟</div><p class="font-bold text-sm mt-3">Nike Air Max</p><p class="text-xs text-gray-500">42 in stock</p><div class="mt-2 flex justify-between items-center"><p class="font-extrabold">₦45k</p><span class="bg-black text-white text-[10px] px-2 py-1 rounded-full">Add</span></div></div>
-<div class="bg-white border rounded-[20px] p-3"><div class="bg-[#FFF7ED] rounded-xl h-[110px] flex items-center justify-center text-3xl">📱</div><p class="font-bold text-sm mt-3">iPhone 13 Case</p><p class="text-xs text-gray-500">120 in stock</p><div class="mt-2 flex justify-between items-center"><p class="font-extrabold">₦8k</p><span class="bg-black text-white text-[10px] px-2 py-1 rounded-full">Add</span></div></div>
-<div class="bg-white border rounded-[20px] p-3"><div class="bg-[#FFF7ED] rounded-xl h-[110px] flex items-center justify-center text-3xl">👜</div><p class="font-bold text-sm mt-3">Mini Tote Bag</p><p class="text-xs text-gray-500">30 in stock</p><div class="mt-2 flex justify-between items-center"><p class="font-extrabold">₦15k</p><span class="bg-[#FF6B00] text-white text-[10px] px-2 py-1 rounded-full">-20%</span></div></div>
-<div class="bg-white border rounded-[20px] p-3"><div class="bg-[#FFF7ED] rounded-xl h-[110px] flex items-center justify-center text-3xl">⌚</div><p class="font-bold text-sm mt-3">Apple Watch Strap</p><p class="text-xs text-gray-500">60 in stock</p><div class="mt-2 flex justify-between items-center"><p class="font-extrabold">₦12k</p><span class="bg-black text-white text-[10px] px-2 py-1 rounded-full">Add</span></div></div>
+<div class="mt-6 grid grid-cols-2 gap-3" id="productGrid">
+<div class="product bg-white border rounded-[20px] p-3" data-name="nike air max sneakers">
+<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80" class="w-full h-[120px] object-cover rounded-xl">
+<p class="font-bold text-sm mt-3">Nike Air Max</p><p class="text-xs text-gray-500">42 in stock • Free delivery</p>
+<div class="mt-2 flex justify-between items-center"><p class="font-extrabold">₦45k</p><button onclick="addToCart('Nike Air Max')" class="bg-black text-white text-[10px] px-3 py-1.5 rounded-full font-bold">Add +</button></div>
+</div>
+
+<div class="product bg-white border rounded-[20px] p-3" data-name="iphone 14 pro phones">
+<img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400&q=80" class="w-full h-[120px] object-cover rounded-xl">
+<p class="font-bold text-sm mt-3">iPhone 14 Pro</p><p class="text-xs text-gray-500">120 in stock</p>
+<div class="mt-2 flex justify-between items-center"><p class="font-extrabold">₦850k</p><button onclick="addToCart('iPhone 14 Pro')" class="bg-black text-white text-[10px] px-3 py-1.5 rounded-full font-bold">Add +</button></div>
+</div>
+
+<div class="product bg-white border rounded-[20px] p-3" data-name="mini tote bag bags">
+<img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=400&q=80" class="w-full h-[120px] object-cover rounded-xl">
+<p class="font-bold text-sm mt-3">Mini Tote Bag</p><p class="text-xs text-gray-500">30 in stock • -20% off</p>
+<div class="mt-2 flex justify-between items-center"><p class="font-extrabold">₦15k</p><button onclick="addToCart('Mini Tote Bag')" class="bg-[#FF6B00] text-white text-[10px] px-3 py-1.5 rounded-full font-bold">Add +</button></div>
+</div>
+
+<div class="product bg-white border rounded-[20px] p-3" data-name="apple watch strap watches luxury">
+<img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=400&q=80" class="w-full h-[120px] object-cover rounded-xl">
+<p class="font-bold text-sm mt-3">Apple Watch Strap</p><p class="text-xs text-gray-500">60 in stock</p>
+<div class="mt-2 flex justify-between items-center"><p class="font-extrabold">₦12k</p><button onclick="addToCart('Apple Watch Strap')" class="bg-black text-white text-[10px] px-3 py-1.5 rounded-full font-bold">Add +</button></div>
+</div>
 </div>
 
 <div class="mt-8 bg-black text-white rounded-[24px] p-6">
 <h3 class="text-xl font-extrabold leading-tight">Want an E-commerce Like This?</h3>
-<p class="text-sm text-white/60 mt-2">Paystack, cart, inventory, delivery tracking.</p>
+<p class="text-sm text-white/60 mt-2">Real product upload, Paystack, cart, inventory, delivery tracking.</p>
 <a href="https://wa.me/2347048750464" class="block mt-4 bg-[#FF6B00] text-white text-center py-3 rounded-full font-bold text-sm">Order This Website - ₦350k</a>
 <p class="text-[10px] text-white/30 mt-3 text-center">Theme: Orange + Black • Build With Dexter</p>
 </div>
 </section>
+
+<script>
+let cart=0;
+function addToCart(name){
+ cart++; document.getElementById('cartCount').innerText=cart;
+ let t=document.getElementById('toast'); t.innerText=name+' added ✓'; t.classList.remove('hidden');
+ setTimeout(()=>t.classList.add('hidden'),1500);
+}
+function filterCat(cat){
+ document.querySelectorAll('.cat-btn div').forEach(d=>{d.className='w-[64px] h-[64px] bg-white border rounded-2xl flex items-center justify-center text-xl'});
+ event.currentTarget.querySelector('div').className='w-[64px] h-[64px] bg-black text-white border-2 border-black rounded-2xl flex items-center justify-center text-xl';
+ document.querySelectorAll('.product').forEach(p=>{
+   if(cat=='all' || p.dataset.name.includes(cat)) p.style.display='block'; else p.style.display='none';
+ });
+}
+function doSearch(){
+ let q=document.getElementById('searchInput').value.toLowerCase();
+ document.querySelectorAll('.product').forEach(p=>{
+   if(p.dataset.name.includes(q) || q=='') p.style.display='block'; else p.style.display='none';
+ });
+}
+</script>
 </body>
 </html>
