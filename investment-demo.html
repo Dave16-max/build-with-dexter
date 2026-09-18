@@ -9,20 +9,17 @@
 <style>body{font-family:'Inter',sans-serif}</style>
 </head>
 <body class="bg-[#F0FDF4] text-black">
-
 <header class="flex justify-between items-center px-5 py-4 bg-white border-b sticky top-0 z-20">
 <div class="flex items-center gap-2"><div class="w-8 h-8 bg-[#16A34A] rounded-lg flex items-center justify-center text-white font-extrabold">G</div><p class="font-extrabold text-sm tracking-tighter">GROWNG</p></div>
 <a href="/" class="text-xs border border-black px-3 py-1.5 rounded-full font-bold">← Back</a>
 </header>
 
-<!-- BIG POPUP -->
 <div id="popup" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center p-5">
 <div class="bg-white rounded-[24px] p-6 w-full max-w-[320px] text-center">
 <div class="w-12 h-12 bg-[#16A34A] rounded-full flex items-center justify-center mx-auto text-white text-xl">✓</div>
-<p class="font-extrabold text-lg mt-3" id="popupTitle">Starter Selected!</p>
-<p class="text-sm text-gray-500 mt-1" id="popupText">You selected Starter ₦50k plan</p>
+<p class="font-extrabold text-lg mt-3" id="popupTitle">Plan Selected!</p>
+<p class="text-sm text-gray-500 mt-1" id="popupText">You selected a plan</p>
 <button onclick="closePopup()" class="mt-5 w-full bg-black text-white py-3 rounded-full font-bold text-sm">Continue to Pay</button>
-<p class="text-[11px] text-gray-400 mt-2">Demo — redirects to Paystack in real site</p>
 </div>
 </div>
 
@@ -36,8 +33,7 @@
 </section>
 
 <section class="px-5 py-6">
-<p class="font-bold text-xs tracking-widest">CHOOSE A PLAN - TAP TO INVEST</p>
-
+<p class="font-bold text-xs tracking-widest">CHOOSE A PLAN</p>
 <div class="mt-4 space-y-4">
 
 <div class="bg-white border rounded-[20px] p-5">
@@ -45,12 +41,7 @@
 <p class="font-extrabold">Starter Plan</p><p class="bg-[#F0FDF4] text-[#16A34A] text-[10px] px-2 py-1 rounded-full font-bold">Most Popular</p>
 </div>
 <p class="text-2xl font-extrabold mt-2">₦50k <span class="text-sm font-normal text-gray-500">→ ₦75k in 7 days</span></p>
-<div class="mt-3 text-xs text-gray-600 space-y-1">
-<p>✓ 50% ROI in 7 days</p>
-<p>✓ Instant withdrawal</p>
-<p>✓ 24/7 support</p>
-</div>
-<button onclick="investNow('Starter ₦50k - ₦75k in 7 days')" class="mt-4 w-full bg-[#16A34A] text-white py-3.5 rounded-full font-bold text-sm active:scale-95">Invest Now - Click Me</button>
+<button onclick="investNow('Starter ₦50k')" class="mt-4 w-full bg-[#16A34A] text-white py-3.5 rounded-full font-bold text-sm">Invest Now</button>
 </div>
 
 <div class="bg-black text-white rounded-[20px] p-5">
@@ -58,33 +49,22 @@
 <p class="font-extrabold">Premium Plan</p><p class="bg-[#22C55E] text-black text-[10px] px-2 py-1 rounded-full font-bold">High ROI</p>
 </div>
 <p class="text-2xl font-extrabold mt-2">₦150k <span class="text-sm font-normal text-white/60">→ ₦255k in 14 days</span></p>
-<div class="mt-3 text-xs text-white/70 space-y-1">
-<p>✓ 70% ROI in 14 days</p>
-<p>✓ Priority withdrawal</p>
-</div>
-<button onclick="investNow('Premium ₦150k - ₦255k in 14 days')" class="mt-4 w-full bg-white text-black py-3.5 rounded-full font-bold text-sm active:scale-95">Invest Now - Click Me</button>
+<button onclick="investNow('Premium ₦150k')" class="mt-4 w-full bg-white text-black py-3.5 rounded-full font-bold text-sm">Invest Now</button>
 </div>
 
 <div class="bg-white border rounded-[20px] p-5">
 <p class="font-extrabold">Diamond Plan</p>
 <p class="text-2xl font-extrabold mt-2">₦500k <span class="text-sm font-normal text-gray-500">→ ₦1M in 30 days</span></p>
-<button onclick="investNow('Diamond ₦500k - ₦1M in 30 days')" class="mt-4 w-full bg-black text-white py-3.5 rounded-full font-bold text-sm active:scale-95">Invest Now - Click Me</button>
+<button onclick="investNow('Diamond ₦500k')" class="mt-4 w-full bg-black text-white py-3.5 rounded-full font-bold text-sm">Invest Now</button>
 </div>
 
 </div>
-
-<div class="mt-8 bg-black text-white rounded-[24px] p-6">
-<h3 class="text-xl font-extrabold leading-tight">Want Investment Site Like This?</h3>
-<a href="https://wa.me/2347048750464" class="block mt-4 bg-[#16A34A] text-white text-center py-3 rounded-full font-bold text-sm">Order This Website - ₦350k</a>
-</div>
-
 </section>
 
 <script>
 function investNow(plan){
  document.getElementById('popupText').innerText = 'You selected ' + plan;
  document.getElementById('popup').classList.remove('hidden');
- if(navigator.vibrate) navigator.vibrate(100);
 }
 function closePopup(){
  document.getElementById('popup').classList.add('hidden');
