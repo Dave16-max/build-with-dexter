@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Booking Demo - StayNG</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>body{font-family:'Inter',sans-serif}.scroll-hide::-webkit-scrollbar{display:none}.scroll-hide{-ms-overflow-style:none;scrollbar-width:none}</style>
+</head>
+<body class="bg-[#EFF6FF] text-black">
+<header class="flex justify-between items-center px-5 py-4 bg-white border-b sticky top-0 z-20">
+<div class="flex items-center gap-2"><div class="w-8 h-8 bg-[#2563EB] rounded-lg flex items-center justify-center text-white font-extrabold">S</div><p class="font-extrabold text-sm tracking-tighter">STAYNG</p></div>
+<a href="/" class="text-xs border border-black px-3 py-1.5 rounded-full font-bold">← Back</a>
+</header>
+
+<div id="toast" class="fixed top-[70px] left-1/2 -translate-x-1/2 bg-black text-white px-4 py-2 rounded-full text-xs font-bold z-50 hidden">Booked ✓</div>
+
+<section class="px-5 py-7 bg-[#2563EB] text-white rounded-b-[30px]">
+<h1 class="text-[32px] leading-[0.95] font-extrabold tracking-tighter">Find Hotels, Apartments & Shortlets <span class="text-[#93C5FD]">Near You.</span></h1>
+<div class="mt-5 bg-white rounded-[18px] p-2 flex gap-2">
+<input id="searchInput" placeholder="Where to? e.g Lekki, Abuja..." class="flex-1 px-3 py-2 text-sm text-black outline-none rounded-full">
+<button onclick="doSearch()" class="bg-[#2563EB] px-5 rounded-full font-bold text-sm text-white">Search</button>
+</div>
+<div class="mt-3 flex gap-2 text-[11px]"><span class="bg-white/20 px-3 py-1 rounded-full">🏨 2,340+ listings</span><span class="bg-white text-[#2563EB] px-3 py-1 rounded-full font-bold">Instant booking</span></div>
+</section>
+
+<section class="px-5 py-6">
+<div class="flex justify-between items-center mb-4">
+<p class="font-bold text-xs tracking-widest">POPULAR LOCATIONS</p>
+<p class="text-xs text-gray-500">Tap to filter</p>
+</div>
+<div class="flex gap-3 overflow-x-auto scroll-hide snap-x">
+<button onclick="filterLoc('all')" class="loc bg-black text-white px-4 py-2 rounded-full text-xs font-bold">All</button>
+<button onclick="filterLoc('lekki')" class="loc bg-white border px-4 py-2 rounded-full text-xs font-bold">Lekki</button>
+<button onclick="filterLoc('abuja')" class="loc bg-white border px-4 py-2 rounded-full text-xs font-bold">Abuja</button>
+<button onclick="filterLoc('ikeja')" class="loc bg-white border px-4 py-2 rounded-full text-xs font-bold">Ikeja</button>
+<button onclick="filterLoc('ph')" class="loc bg-white border px-4 py-2 rounded-full text-xs font-bold">P.H</button>
+</div>
+
+<div class="mt-6 grid grid-cols-1 gap-4" id="hotelGrid">
+<div class="hotel bg-white border rounded-[20px] overflow-hidden" data-name="lekki">
+<img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&q=80" class="w-full h-[160px] object-cover">
+<div class="p-4"><div class="flex justify-between"><p class="font-bold text-sm">Lekki Luxury Shortlet</p><p class="text-xs bg-[#EFF6FF] text-[#2563EB] px-2 py-1 rounded-full font-bold">★ 4.9</p></div><p class="text-xs text-gray-500 mt-1">Lekki Phase 1 • 2 beds • Pool</p><div class="mt-3 flex justify-between items-center"><p class="font-extrabold">₦35k <span class="text-xs font-normal text-gray-500">/ night</span></p><button onclick="bookNow('Lekki Luxury Shortlet')" class="bg-[#2563EB] text-white text-xs px-4 py-2 rounded-full font-bold">Book Now</button></div></div>
+</div>
+
+<div class="hotel bg-white border rounded-[20px] overflow-hidden" data-name="abuja">
+<img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&q=80" class="w-full h-[160px] object-cover">
+<div class="p-4"><div class="flex justify-between"><p class="font-bold text-sm">Abuja Hilltop Apartment</p><p class="text-xs bg-[#EFF6FF] text-[#2563EB] px-2 py-1 rounded-full font-bold">★ 4.8</p></div><p class="text-xs text-gray-500 mt-1">Wuse 2 • 3 beds • Kitchen</p><div class="mt-3 flex justify-between items-center"><p class="font-extrabold">₦50k <span class="text-xs font-normal text-gray-500">/ night</span></p><button onclick="bookNow('Abuja Hilltop Apartment')" class="bg-black text-white text-xs px-4 py-2 rounded-full font-bold">Book Now</button></div></div>
+</div>
+
+<div class="hotel bg-white border rounded-[20px] overflow-hidden" data-name="ikeja">
+<img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=600&q=80" class="w-full h-[160px] object-cover">
+<div class="p-4"><div class="flex justify-between"><p class="font-bold text-sm">Ikeja Budget Lodge</p><p class="text-xs bg-[#EFF6FF] text-[#2563EB] px-2 py-1 rounded-full font-bold">★ 4.6</p></div><p class="text-xs text-gray-500 mt-1">Ikeja GRA • Self contain</p><div class="mt-3 flex justify-between items-center"><p class="font-extrabold">₦15k <span class="text-xs font-normal text-gray-500">/ night</span></p><button onclick="bookNow('Ikeja Budget Lodge')" class="bg-black text-white text-xs px-4 py-2 rounded-full font-bold">Book Now</button></div></div>
+</div>
+</div>
+
+<div class="mt-8 bg-black text-white rounded-[24px] p-6">
+<h3 class="text-xl font-extrabold leading-tight">Want a Booking Site Like This?</h3>
+<p class="text-sm text-white/60 mt-2">Calendar, payment, WhatsApp alerts, map.</p>
+<a href="https://wa.me/2347048750464" class="block mt-4 bg-[#2563EB] text-white text-center py-3 rounded-full font-bold text-sm">Order This Website - ₦300k</a>
+<p class="text-[10px] text-white/30 mt-3 text-center">Theme: Blue + White • Build With Dexter</p>
+</div>
+</section>
+
+<script>
+function showToast(m){ let t=document.getElementById('toast'); t.innerText=m; t.classList.remove('hidden'); setTimeout(()=>t.classList.add('hidden'),2000); }
+function bookNow(name){ showToast(name+' booked ✓ - Check WhatsApp'); }
+function filterLoc(loc){
+ document.querySelectorAll('.loc').forEach(b=>b.className='loc bg-white border px-4 py-2 rounded-full text-xs font-bold');
+ event.currentTarget.className='loc bg-black text-white px-4 py-2 rounded-full text-xs font-bold';
+ document.querySelectorAll('.hotel').forEach(h=>{
+   if(loc=='all' || h.dataset.name.includes(loc)) h.style.display='block'; else h.style.display='none';
+ });
+}
+function doSearch(){
+ let q=document.getElementById('searchInput').value.toLowerCase();
+ document.querySelectorAll('.hotel').forEach(h=>{
+   if(h.dataset.name.includes(q) || q=='') h.style.display='block'; else h.style.display='none';
+ });
+}
+</script>
+</body>
+</html>
