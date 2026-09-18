@@ -3,44 +3,53 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Business Demo | Build With Dexter</title>
+<title>Portfolio Demo - Real Homepage | Build With Dexter</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-<style>body{font-family:'Inter',sans-serif}</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+<style>body{font-family:'Inter',sans-serif}.grotesk{font-family:'Space Grotesk',sans-serif}</style>
 </head>
-<body class="bg-white text-[#0F2A5A]">
-<header class="sticky top-0 bg-white border-b px-5 py-3 flex justify-between items-center z-50">
-<a href="/" class="font-extrabold flex items-center gap-2">← Back</a>
-<a href="https://wa.me/2347048750464" class="bg-[#0B5FFF] text-white px-4 py-2 rounded-full text-sm font-bold">Order - ₦150k</a>
+<body class="bg-[#FFFBF2] text-[#0F2A5A]">
+<!-- HEADER - Like real portfolio -->
+<header class="max-w-7xl mx-auto px-5 py-5 flex justify-between items-center">
+<h1 class="font-extrabold text-xl grotesk">ADEX.DESIGN</h1>
+<nav class="hidden md:flex gap-8 text-sm font-semibold"><span>Work</span><span>About</span><span>Contact</span></nav>
+<a href="https://wa.me/2347048750464" class="border-2 border-black px-5 py-2 rounded-full text-sm font-bold">Hire Me - ₦100k Site</a>
 </header>
 
-<section class="max-w-7xl mx-auto px-5 py-12 grid md:grid-cols-2 gap-10 items-center">
+<!-- HERO - Full Homepage -->
+<section class="max-w-7xl mx-auto px-5 py-10 grid md:grid-cols-2 gap-10 items-center">
 <div>
-<p class="text-[#0B5FFF] font-bold tracking-widest text-sm">ELITE INTERIORS • LAGOS</p>
-<h1 class="text-5xl font-extrabold leading-[0.95] mt-2">We Design Spaces That Work For You</h1>
-<p class="mt-4 text-gray-600">Real photos, real projects. From Lekki to Ikeja, we transform homes & offices. 120+ projects completed.</p>
+<p class="bg-black text-white inline-block px-3 py-1 rounded-full text-xs font-bold">📍 Available for projects in Lagos</p>
+<h2 class="text-6xl grotesk font-extrabold leading-[0.85] mt-4">I Design Products That Make Money</h2>
+<p class="mt-4 text-gray-600 max-w-md">I'm Adekunle - Product Designer based in Yaba. I don work with 30+ startups. My portfolio site na like this.</p>
 <div class="mt-6 flex gap-3">
-<a href="https://wa.me/2347048750464" class="bg-[#0B5FFF] text-white px-6 py-3 rounded-xl font-bold">Get Quote on WhatsApp</a>
-<p class="text-sm text-gray-500 self-center">📍 Lagos • Abuja • PH</p>
+<a href="https://wa.me/2347048750464" class="bg-[#0B5FFF] text-white px-7 py-3 rounded-full font-bold">Order Similar - ₦100k</a>
+<a href="/" class="bg-white border px-7 py-3 rounded-full font-bold">← Back</a>
+</div>
+<div class="mt-8 flex gap-8">
+<div><p class="text-3xl font-extrabold">30+</p><p class="text-xs text-gray-500">Projects</p></div>
+<div><p class="text-3xl font-extrabold">5 Years</p><p class="text-xs text-gray-500">Experience</p></div>
+<div><p class="text-3xl font-extrabold">100%</p><p class="text-xs text-gray-500">Satisfaction</p></div>
 </div>
 </div>
-<div class="grid grid-cols-2 gap-3">
-<img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=500" class="rounded-2xl h-48 w-full object-cover">
-<img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=500" class="rounded-2xl h-48 w-full object-cover mt-6">
+<div class="relative">
+<img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600" class="rounded-[32px] w-full h-[480px] object-cover">
+<div class="absolute bottom-5 left-5 bg-white p-4 rounded-2xl shadow-xl flex gap-3 items-center">
+<img src="https://i.pravatar.cc/100?img=12" class="w-10 h-10 rounded-full"><div><p class="font-bold text-sm">Figma to Code</p><p class="text-xs text-gray-500">My recent project</p></div>
+</div>
 </div>
 </section>
 
-<section class="bg-[#F7FAFF] py-12 px-5">
-<div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
-<div class="bg-white p-6 rounded-2xl border"><img src="https://images.unsplash.com/photo-1616046229478-9901c5536a45?w=500" class="rounded-xl h-40 w-full object-cover"><h4 class="font-bold mt-3">Living Room Setup</h4><p class="text-sm text-gray-500">Lekki Phase 1 - 3 days delivery</p></div>
-<div class="bg-white p-6 rounded-2xl border"><img src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=500" class="rounded-xl h-40 w-full object-cover"><h4 class="font-bold mt-3">Office Space</h4><p class="text-sm text-gray-500">VI - 50 staff capacity</p></div>
-<div class="bg-white p-6 rounded-2xl border"><img src="https://images.unsplash.com/photo-1618220179428-22790b461013?w=500" class="rounded-xl h-40 w-full object-cover"><h4 class="font-bold mt-3">Kitchen Design</h4><p class="text-sm text-gray-500">Ikeja GRA - Modern finish</p></div>
+<!-- WORK SECTION - Real homepage has this -->
+<section class="max-w-7xl mx-auto px-5 pb-16">
+<h3 class="font-extrabold text-2xl grotesk">Selected Work (3)</h3>
+<div class="mt-5 grid md:grid-cols-3 gap-5">
+<div><img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=500" class="rounded-2xl h-56 w-full object-cover"><p class="font-bold mt-2">Paystack Dashboard Redesign</p><p class="text-xs text-gray-500">2024 • Fintech</p></div>
+<div><img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=500" class="rounded-2xl h-56 w-full object-cover"><p class="font-bold mt-2">Flutterwave Mobile App</p><p class="text-xs text-gray-500">2023 • Mobile</p></div>
+<div><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500" class="rounded-2xl h-56 w-full object-cover"><p class="font-bold mt-2">Moniepoint Website</p><p class="text-xs text-gray-500">2024 • Web Design</p></div>
 </div>
 </section>
 
-<footer class="py-10 text-center">
-<p class="text-sm text-gray-500">This is a REAL business demo by Build With Dexter — No AI pictures, real interior photos</p>
-<a href="/" class="inline-block mt-4 bg-[#0B5FFF] text-white px-6 py-3 rounded-xl font-bold">← Back to Main Site</a>
-</footer>
+<footer class="bg-black text-white py-6 text-center text-sm">This na FULL HOMEPAGE demo for Portfolio (₦100k) by Build With Dexter</footer>
 </body>
 </html>
